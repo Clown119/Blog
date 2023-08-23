@@ -6,7 +6,7 @@
   <link href="https://clownblog.top/atom.xml" rel="self"/>
   
   <link href="https://clownblog.top/"/>
-  <updated>2023-08-20T05:43:24.613Z</updated>
+  <updated>2023-08-23T06:34:35.101Z</updated>
   <id>https://clownblog.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LED</title>
+    <link href="https://clownblog.top/posts/7a7e937f.html"/>
+    <id>https://clownblog.top/posts/7a7e937f.html</id>
+    <published>2023-08-22T16:00:00.000Z</published>
+    <updated>2023-08-23T06:34:35.101Z</updated>
+    
+    <content type="html"><![CDATA[<h1>LED</h1><h2 id="点亮LED">点亮LED</h2><p>源文件</p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//led.v</span></span><br><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1ns / 1ps</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//点亮LED</span></span><br><span class="line"><span class="keyword">module</span> led(</span><br><span class="line"><span class="keyword">input</span>clk,</span><br><span class="line"><span class="keyword">input</span>rst_n,<span class="comment">//低电平复位</span></span><br><span class="line"><span class="keyword">output</span><span class="keyword">reg</span>led</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk) <span class="keyword">begin</span><span class="comment">//同步复位</span></span><br><span class="line"><span class="keyword">if</span>(!rst_n)</span><br><span class="line">led&lt;=<span class="number">1&#x27;b0</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">led&lt;=<span class="number">1&#x27;b1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure><p>仿真文件</p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tb.v</span></span><br><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1ns / 1ps</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> tb();</span><br><span class="line"><span class="keyword">reg</span>clk;</span><br><span class="line"><span class="keyword">reg</span>rst_n;</span><br><span class="line"><span class="keyword">wire</span>led;</span><br><span class="line"></span><br><span class="line">led led_tb(</span><br><span class="line"><span class="variable">.clk</span>(clk),</span><br><span class="line"><span class="variable">.rst_n</span>(rst_n),</span><br><span class="line"><span class="variable">.led</span>(led)</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">clk=<span class="number">1&#x27;b0</span>;</span><br><span class="line">rst_n=<span class="number">1&#x27;b0</span>;</span><br><span class="line">#<span class="number">100</span></span><br><span class="line">rst_n=<span class="number">1&#x27;b1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">always</span>#<span class="number">10</span>clk=~clk;</span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure><p><img src="https://jihulab.com/Clown119/markdown/-/raw/main/led.png" alt=""></p><h2 id="流水灯">流水灯</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//流水灯</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="走马灯">走马灯</h2><h2 id="呼吸灯">呼吸灯</h2>]]></content>
+    
+    
+    <summary type="html">Example of LED</summary>
+    
+    
+    
+    <category term="FPGA基础" scheme="https://clownblog.top/categories/FPGA%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="LED" scheme="https://clownblog.top/tags/LED/"/>
+    
+    <category term="FPGA" scheme="https://clownblog.top/tags/FPGA/"/>
+    
+  </entry>
   
   <entry>
     <title>post_title</title>
@@ -125,9 +148,9 @@ okk&lt;br&gt;
     <category term="sds" scheme="https://clownblog.top/categories/sds/"/>
     
     
-    <category term="okkk" scheme="https://clownblog.top/tags/okkk/"/>
-    
     <category term="sss" scheme="https://clownblog.top/tags/sss/"/>
+    
+    <category term="okkk" scheme="https://clownblog.top/tags/okkk/"/>
     
   </entry>
   
@@ -153,9 +176,9 @@ okk&lt;br&gt;
     <category term="te" scheme="https://clownblog.top/categories/te/"/>
     
     
-    <category term="test" scheme="https://clownblog.top/tags/test/"/>
-    
     <category term="okkk" scheme="https://clownblog.top/tags/okkk/"/>
+    
+    <category term="test" scheme="https://clownblog.top/tags/test/"/>
     
   </entry>
   
